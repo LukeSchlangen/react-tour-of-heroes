@@ -1,4 +1,4 @@
-// src/App.js
+// src/App/App.js
 import React, { Component } from 'react';
 import './App.css';
 

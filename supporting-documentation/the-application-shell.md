@@ -101,12 +101,27 @@ body, input[text], button {
 }
 ```
 
+## Folder Component Structure
+
+Before moving forward, let's structure our files to prepare for adding more components going forward.
+
+- In `src`, create a new folder called `App`. This will contain the relevant files for our `App` component.
+  - move `App.css` into the new `App` folder
+  - move `App.js` into the new `App` folder
+- In `src`, create a new folder call `__test__`. This will contain all of our tests.
+  - move `App.test.js` to the new `__test__` folder
+
+Now that we have moved our files around, we need to source them correctly elsewhere in our application.
+
+- In `src/index.js` change the line `import App from './App';` to `import App from './App/App';`
+- In `src/__test__/App.test.js` change the line `import App from './App';` to `import App from '../App/App';`
+
 ## Final Code Review
 
 Here are the code files discussed on this page.
 
 ```JSX
-// src/App.js
+// src/App/App.js
 import React, { Component } from 'react';
 import './App.css';
 
@@ -123,7 +138,7 @@ export default App;
 ```
 
 ```CSS
-/* src/App.css */
+/* src/App/App.css */
 /* Application-wide Styles */
 h1 {
   color: #369;
@@ -146,6 +161,30 @@ body, input[text], button {
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
+```
+
+```JSX
+// src/index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App/App';
+import registerServiceWorker from './registerServiceWorker';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();
+```
+
+```JSX
+// src/__test__/App.test.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from '../App/App';
+
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<App />, div);
+});
 ```
 
 ## Summary
