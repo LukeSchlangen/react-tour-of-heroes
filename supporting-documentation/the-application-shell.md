@@ -77,6 +77,7 @@ Most apps strive for a consistent look across the application. The CLI generated
 Here's an excerpt from the App.css for the Tour of Heroes sample app.
 
 ```CSS
+/* src/App/App.css */
 /* Application-wide Styles */
 h1 {
   color: #369;
