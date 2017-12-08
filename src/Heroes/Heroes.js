@@ -1,25 +1,36 @@
 // src/Heroes/Heroes.js
 import React, { Component } from 'react';
 
-const hero = {
-    id: 1,
-    name: 'Windstorm',
-};
-
 class Heroes extends Component {
-  render() {
-    return (
-        <div>
-            <h2>{ hero.name.toUpperCase() } Details</h2>
-            <div><span>id: </span>{ hero.id }</div>
+    constructor() {
+        super();
+        this.state = {
+            hero: {
+                id: 1,
+                name: 'Windstorm',
+            }
+        }
+
+        this.updateHeroName = this.updateHeroName.bind(this);
+    }
+
+    updateHeroName(event) {
+        this.setState({ hero: {name: event.target.value }});
+    }
+
+    render() {
+        return (
             <div>
-                <label>name:
-                  <input value={ hero.name } placeholder="name"></input>
-                </label>
+                <h2>{this.state.hero.name.toUpperCase()} Details</h2>
+                <div><span>id: </span>{this.state.hero.id}</div>
+                <div>
+                    <label>name:
+                        <input value={this.state.hero.name} onChange={this.updateHeroName} placeholder="name"></input>
+                    </label>
+                </div>
             </div>
-        </div>
-    );
-  }
+        );
+    }
 }
 
 export default Heroes;
