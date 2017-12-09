@@ -126,7 +126,7 @@ The textbox should both _display_ the hero's `name` property and update that pro
 
 > Note: If you're following along with the Angular Tour of Heroes tutorial, this is probably the largest divergence away since React doesn't suport `Two-way binding` and instead opts for `unidirectional data flow`. There are many other articles and guids that cover the differences, so this tutorial will focus less on the pros and cons of one versus the other. Instead this tutorial will focus more on the implementation in React.
 
-## React State
+### React State
 
 Before we get to editing the hero, we're going to make a slight change to how our current hero object is stored. Right now, our hero object is a `const` that we set, but hard-coding constants into our file isn't really a great way to do things. Instead, things that are mutable in React will be a part of the component state. To make these adjustments, first, we are going to remove the following:
 
@@ -166,7 +166,7 @@ render() {
 
 Now that we have moved our hero into the component state, we are ready to make changes to our hero.
 
-## Unidirectional data flow
+### Unidirectional data flow
 
 Let's add an input to our page which is where we will be able to make changes to the Hero's name. Add this `<div>` under the two other `<div>`s in the `render()` method:
 
