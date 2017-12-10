@@ -1,5 +1,6 @@
 // src/Heroes/Heroes.js
 import React, { Component } from 'react';
+import './Heroes.css'
 
 class Heroes extends Component {
     constructor() {
@@ -8,26 +9,40 @@ class Heroes extends Component {
             hero: {
                 id: 1,
                 name: 'Windstorm',
-            }
-        }
+            },
+            heroes: [
+                { id: 11, name: 'Mr. Nice' },
+                { id: 12, name: 'Narco' },
+                { id: 13, name: 'Bombasto' },
+                { id: 14, name: 'Celeritas' },
+                { id: 15, name: 'Magneta' },
+                { id: 16, name: 'RubberMan' },
+                { id: 17, name: 'Dynama' },
+                { id: 18, name: 'Dr IQ' },
+                { id: 19, name: 'Magma' },
+                { id: 20, name: 'Tornado' }
+            ]
+        };
 
         this.updateHeroName = this.updateHeroName.bind(this);
     }
 
     updateHeroName(event) {
-        this.setState({ hero: {name: event.target.value }});
+        this.setState({ hero: { name: event.target.value } });
     }
 
     render() {
         return (
             <div>
-                <h2>{this.state.hero.name.toUpperCase()} Details</h2>
-                <div><span>id: </span>{this.state.hero.id}</div>
-                <div>
-                    <label>name:
-                        <input value={this.state.hero.name} onChange={this.updateHeroName} placeholder="name"></input>
-                    </label>
-                </div>
+                <h2>My Heroes</h2>
+                <ul className="heroes">
+                    {this.state.heroes.map(hero => (
+                        <li key={hero.id}>
+                            <span className="badge">{hero.id}</span>
+                            {hero.name}
+                        </li>
+                    ))}
+                </ul>
             </div>
         );
     }
