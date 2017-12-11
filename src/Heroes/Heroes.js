@@ -25,10 +25,15 @@ class Heroes extends Component {
         };
 
         this.updateHeroName = this.updateHeroName.bind(this);
+        this.onSelect = this.onSelect.bind(this);
     }
 
     updateHeroName(event) {
         this.setState({ hero: { name: event.target.value } });
+    }
+
+    onSelect(hero) {
+        console.log('onSelect was clicked', hero);
     }
 
     render() {
@@ -37,7 +42,7 @@ class Heroes extends Component {
                 <h2>My Heroes</h2>
                 <ul className="heroes">
                     {this.state.heroes.map(hero => (
-                        <li key={hero.id}>
+                        <li key={hero.id} onClick={event => this.onSelect(hero)}>
                             <span className="badge">{hero.id}</span>
                             {hero.name}
                         </li>

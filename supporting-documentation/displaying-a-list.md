@@ -152,7 +152,31 @@ import './Heroes.css'
 
 ## Master/Detail
 
+When the user clicks a hero in the master list, the component should display the selected hero's **details** at the bottom of the page.
 
+In this section, you'll listen for the hero item click event and update the hero detail.
+
+### Add a click event binding
+
+Add a click event binding to the `<li>` like this:
+
+```JSX
+<li key={hero.id} onClick={event => this.onSelect(hero)}>
+```
+
+Like we did for our `updateHeroName` function, we need to create our new method and bind it in the constructor in order to use it. Put this new method below `updateHeroName` and above `render`:
+
+```JSX
+onSelect(hero) {
+    console.log('onSelect was clicked', hero);
+}
+```
+
+Now that we have this new method, let's bind it to the correct scope in our constructor so that we can use it. Place this line at the bottom of our `constructor` (just below the line that binds `this.updateHeroName`):
+
+```JSX
+this.onSelect = this.onSelect.bind(this);
+```
 
 https://angular.io/tutorial/toh-pt2
 
